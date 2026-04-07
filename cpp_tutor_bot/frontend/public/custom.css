@@ -1,0 +1,473 @@
+/* ========================================
+   C++小老师 - 可爱风格CSS
+   面向中小学生的温馨设计
+   ======================================== */
+
+/* ===== 全局样式 ===== */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+
+:root {
+    --primary-color: #FF9A9E;
+    --primary-dark: #FECFEF;
+    --secondary-color: #A18CD1;
+    --accent-color: #FBC2EB;
+    --bg-gradient-1: #FFF5F5;
+    --bg-gradient-2: #FFF0F6;
+    --bg-gradient-3: #F8F4FF;
+    --text-color: #4A4A4A;
+    --text-light: #888;
+    --shadow-soft: 0 4px 15px rgba(255, 154, 158, 0.15);
+    --shadow-medium: 0 6px 20px rgba(161, 140, 209, 0.2);
+    --radius-large: 20px;
+    --radius-medium: 16px;
+    --radius-small: 12px;
+}
+
+body {
+    font-family: 'Noto Sans SC', 'Comic Sans MS', 'Microsoft YaHei', sans-serif !important;
+    background: linear-gradient(135deg, var(--bg-gradient-1) 0%, var(--bg-gradient-2) 50%, var(--bg-gradient-3) 100%) !important;
+    color: var(--text-color) !important;
+}
+
+/* ===== 主容器 ===== */
+.chat-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-large);
+}
+
+/* ===== 消息气泡 - 可爱风格 ===== */
+.message {
+    border-radius: var(--radius-large) !important;
+    margin: 10px 0 !important;
+    padding: 16px 20px !important;
+    box-shadow: var(--shadow-soft) !important;
+    animation: cuteSlideIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: all 0.3s ease !important;
+    border: 2px solid transparent !important;
+}
+
+.message:hover {
+    transform: translateY(-3px) scale(1.01) !important;
+    box-shadow: var(--shadow-medium) !important;
+    border-color: var(--primary-color) !important;
+}
+
+/* 用户消息气泡 */
+.message[data-author="user"] {
+    background: linear-gradient(135deg, #FF9A9E 0%, #FECFEF 100%) !important;
+    color: white !important;
+    border-color: #FFB6C1 !important;
+}
+
+.message[data-author="user"]::after {
+    content: ' 👦';
+    position: absolute;
+    right: -30px;
+    bottom: 0;
+    font-size: 24px;
+}
+
+/* AI消息气泡 */
+.message[data-author="assistant"],
+.message[data-author*="小老师"] {
+    background: white !important;
+    color: var(--text-color) !important;
+    border-color: #E8D5F5 !important;
+}
+
+.message[data-author="assistant"]::before,
+.message[data-author*="小老师"]::before {
+    content: '🎓 ';
+    font-size: 20px;
+}
+
+/* ===== 头像样式 ===== */
+.avatar {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    border: 3px solid var(--primary-color) !important;
+    box-shadow: 0 2px 8px rgba(255, 154, 158, 0.3) !important;
+    transition: all 0.3s ease !important;
+}
+
+.avatar:hover {
+    transform: rotate(360deg) scale(1.1) !important;
+    border-color: var(--secondary-color) !important;
+}
+
+/* ===== 代码块 - 可爱风格 ===== */
+.code-block {
+    border-radius: var(--radius-medium) !important;
+    margin: 12px 0 !important;
+    overflow: hidden !important;
+    background: linear-gradient(135deg, #2D2D30 0%, #1E1E1E 100%) !important;
+    border: 2px solid var(--accent-color) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+.code-block pre {
+    font-family: 'Fira Code', 'Cascadia Code', 'Consolas', 'Courier New', monospace !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    padding: 16px !important;
+}
+
+/* 代码块顶部标签 */
+.code-block::before {
+    content: '📝 C++ 代码';
+    display: block;
+    background: linear-gradient(90deg, #FF9A9E, #FECFEF);
+    color: white;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: var(--radius-small) var(--radius-small) 0 0;
+}
+
+/* ===== 输入框 - 可爱风格 ===== */
+.input-container {
+    background: white !important;
+    border-radius: var(--radius-large) !important;
+    box-shadow: var(--shadow-medium) !important;
+    border: 3px solid var(--primary-color) !important;
+    transition: all 0.3s ease !important;
+    margin: 10px !important;
+}
+
+.input-container:focus-within {
+    border-color: var(--secondary-color) !important;
+    box-shadow: 0 8px 25px rgba(161, 140, 209, 0.3) !important;
+    transform: translateY(-2px) !important;
+}
+
+textarea,
+input[type="text"] {
+    border: none !important;
+    background: transparent !important;
+    font-family: 'Noto Sans SC', sans-serif !important;
+    font-size: 15px !important;
+    color: var(--text-color) !important;
+    padding: 12px 16px !important;
+}
+
+textarea:focus,
+input[type="text"]:focus {
+    outline: none !important;
+}
+
+/* ===== 按钮样式 - 可爱圆润 ===== */
+button {
+    border-radius: var(--radius-medium) !important;
+    font-weight: 600 !important;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+    border: 2px solid var(--primary-color) !important;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color)) !important;
+    color: white !important;
+    padding: 10px 20px !important;
+    cursor: pointer !important;
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 6px 15px rgba(255, 154, 158, 0.4) !important;
+    border-color: var(--secondary-color) !important;
+}
+
+button:active {
+    transform: translateY(-1px) scale(1.02) !important;
+}
+
+/* 快捷问题按钮 */
+.element-text {
+    display: inline-block !important;
+    margin: 8px !important;
+    padding: 12px 20px !important;
+    background: linear-gradient(135deg, #FF9A9E 0%, #FECFEF 100%) !important;
+    border-radius: var(--radius-medium) !important;
+    border: 2px solid #FFB6C1 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    box-shadow: var(--shadow-soft) !important;
+}
+
+.element-text:hover {
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: var(--shadow-medium) !important;
+    background: linear-gradient(135deg, #FECFEF 0%, #FF9A9E 100%) !important;
+}
+
+/* ===== 侧边栏 - 毛玻璃效果 ===== */
+.sidebar {
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(15px) !important;
+    border-right: 2px dashed var(--primary-color) !important;
+}
+
+/* ===== 滚动条 - 可爱风格 ===== */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #FFF0F6;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #FF9A9E, #FBC2EB);
+    border-radius: 10px;
+    border: 2px solid white;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #FECFEF, #A18CD1);
+}
+
+/* ===== 加载动画 - 可爱跳动 ===== */
+@keyframes cuteBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes cuteSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes cutePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+/* 思考中动画 */
+.typing-indicator span {
+    animation: cuteBounce 1.4s infinite ease-in-out !important;
+    background: var(--primary-color) !important;
+    border-radius: 50% !important;
+    width: 10px !important;
+    height: 10px !important;
+    margin: 0 3px !important;
+    display: inline-block !important;
+}
+
+.typing-indicator span:nth-child(1) { animation-delay: -0.32s !important; }
+.typing-indicator span:nth-child(2) { animation-delay: -0.16s !important; }
+
+/* ===== 标题样式 - 大小层级区分 ===== */
+h1 {
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    color: var(--secondary-color) !important;
+    text-shadow: 2px 2px 4px rgba(161, 140, 209, 0.2) !important;
+    margin: 20px 0 12px 0 !important;
+    border-bottom: 3px solid var(--primary-color) !important;
+    padding-bottom: 8px !important;
+}
+
+h1::before { content: '🌟 '; }
+
+h2 {
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    color: var(--secondary-color) !important;
+    text-shadow: 1px 1px 3px rgba(161, 140, 209, 0.15) !important;
+    margin: 16px 0 10px 0 !important;
+}
+
+h2::before { content: '✨ '; }
+
+h3 {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    color: #9B7ED8 !important;
+    margin: 12px 0 8px 0 !important;
+}
+
+h3::before { content: '💫 '; }
+
+h4 {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #8B6FC0 !important;
+    margin: 10px 0 6px 0 !important;
+}
+
+/* ===== 正文和段落样式 ===== */
+p {
+    font-size: 15px !important;
+    line-height: 1.8 !important;
+    margin: 8px 0 !important;
+    color: var(--text-color) !important;
+}
+
+/* ===== 代码块内文本 ===== */
+code {
+    font-size: 13px !important;
+    font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace !important;
+    background: #F0E6FF !important;
+    color: #6B4C9A !important;
+    padding: 2px 6px !important;
+    border-radius: 6px !important;
+}
+
+/* 代码块样式 */
+.code-block {
+    border-radius: var(--radius-medium) !important;
+    margin: 12px 0 !important;
+    overflow: hidden !important;
+    background: linear-gradient(135deg, #2D2D30 0%, #1E1E1E 100%) !important;
+    border: 2px solid var(--accent-color) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+.code-block pre {
+    font-family: 'Fira Code', 'Cascadia Code', 'Consolas', 'Courier New', monospace !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    padding: 16px !important;
+    color: #E0E0E0 !important;
+}
+
+/* 代码块顶部标签 */
+.code-block::before {
+    content: '📝 C++ 代码';
+    display: block;
+    background: linear-gradient(90deg, #FF9A9E, #FECFEF);
+    color: white;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: var(--radius-small) var(--radius-small) 0 0;
+}
+
+/* ===== 列表样式 ===== */
+ul, ol {
+    padding-left: 24px !important;
+    margin: 8px 0 !important;
+}
+
+li {
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+    margin: 6px 0 !important;
+    color: var(--text-color) !important;
+}
+
+ul li::marker {
+    color: var(--primary-color) !important;
+    font-size: 1.2em !important;
+}
+
+/* ===== 强调文本 ===== */
+strong {
+    color: var(--secondary-color) !important;
+    font-weight: 700 !important;
+    font-size: inherit !important;
+}
+
+em {
+    color: var(--primary-color) !important;
+    font-style: italic !important;
+}
+
+/* ===== 小字文本 ===== */
+small {
+    font-size: 13px !important;
+    color: var(--text-light) !important;
+}
+
+/* ===== 文件上传按钮 ===== */
+.file-upload {
+    background: linear-gradient(135deg, #A18CD1 0%, #FBC2EB 100%) !important;
+    border-radius: var(--radius-medium) !important;
+    padding: 10px 16px !important;
+    color: white !important;
+    border: none !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.file-upload:hover {
+    transform: translateY(-2px) scale(1.05) !important;
+    box-shadow: 0 6px 15px rgba(161, 140, 209, 0.3) !important;
+}
+
+/* ===== 提示信息 ===== */
+.alert {
+    border-radius: var(--radius-medium) !important;
+    padding: 12px 16px !important;
+    border: 2px solid !important;
+    margin: 10px 0 !important;
+}
+
+.alert-success {
+    background: #F0FFF4 !important;
+    border-color: #68D391 !important;
+    color: #276749 !important;
+}
+
+.alert-error {
+    background: #FFF5F5 !important;
+    border-color: #FC8181 !important;
+    color: #9B2C2C !important;
+}
+
+/* ===== 响应式优化 ===== */
+@media (max-width: 768px) {
+    .message {
+        margin: 8px 5px !important;
+        padding: 12px 16px !important;
+    }
+
+    .input-container {
+        margin: 5px !important;
+    }
+
+    button {
+        padding: 8px 16px !important;
+        font-size: 14px !important;
+    }
+}
+
+/* ===== 可爱装饰元素 ===== */
+.message::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    width: 10px;
+    height: 10px;
+    background: inherit;
+    border-radius: 50%;
+    opacity: 0.3;
+}
+
+/* 悬停提示 */
+[title] {
+    position: relative !important;
+}
+
+[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--secondary-color);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 100;
+}

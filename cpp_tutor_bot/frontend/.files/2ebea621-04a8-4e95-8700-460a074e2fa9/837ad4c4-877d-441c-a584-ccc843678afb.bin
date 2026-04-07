@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+using namespace std;
+const int N=100+5;
+int n,a[N];
+bool vis[N];//标记某个数有没有被选过
+void dfs(int x){
+	if (x==n+1){
+		for (int i=1;i<=n;i++)cout<<a[i]<<" ";
+		cout<<endl;
+		return;
+	}
+	for (int i=1;i<=n;i++){
+		if (!vis[i]){//如果这个数没有被选过
+			a[x]=i;//第x个位置选这个数
+			vis[i]=true;//标记这个数被选过
+			dfs(x+1);//选下一个数
+		}
+	}
+}
+int main(){
+	cin>>n;
+	dfs(1);//排列第一个数字
+	return 0;
+}

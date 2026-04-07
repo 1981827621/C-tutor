@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir *)",
+      "Bash(copy *)",
+      "Bash(mkdir *)"
+    ]
+  },
+  "$version": 3
+}
